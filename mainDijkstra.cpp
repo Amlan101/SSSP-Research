@@ -16,14 +16,18 @@ using namespace std;
 
 // defining constant expressions
 constexpr auto nodeCount = 20;
-constexpr auto file = "Graph_2_20_Nodes.csv";
-constexpr auto preformanceFile = "DijkstraPerforma_2_20_Nodes.csv";
-constexpr auto outputFile = "DijkstraOutput_2_20_Nodes.csv";
+constexpr auto file = "testGraphs/Graph_2_20_Nodes.csv";
+constexpr auto preformanceFile = "Outputs/DijkstraPerforma_2_20_Nodes.csv";
+constexpr auto outputFile = "Outputs/DijkstraOutput_2_20_Nodes.csv";
 constexpr auto noOfRounds = 20;
 constexpr auto noOfTrials = 5;
 
-// Helper function to call and prepare the returned value to be written in a CSV file
-
+/**
+ * Converts a vector of integers to its string representation enclosed within braces.
+ *
+ * @param vec The input vector to be converted to a string.
+ * @return string A string representation of the input vector enclosed within braces.
+ */
 static string vecToStr(const vector<int> &vec)
 {
     stringstream data;
@@ -36,6 +40,12 @@ static string vecToStr(const vector<int> &vec)
     return data.str();
 }
 
+/**
+ * Converts a vector of vectors of integers to its string representation enclosed within braces and brackets.
+ *
+ * @param vec The input vector of vectors to be converted to a string.
+ * @return string A string representation of the input vector of vectors enclosed within braces and brackets.
+ */
 static string vecVecToStr(const vector<vector<int>> &vec)
 {
     stringstream data;
@@ -58,6 +68,14 @@ static string vecVecToStr(const vector<vector<int>> &vec)
     return data.str();
 }
 
+/**
+ * Executes Dijkstra's algorithm for a specific round and trial, storing and writing the results to CSV files.
+ *
+ * @param round The round number indicating the iteration.
+ * @param trial The trial number within the round.
+ * @param startNode The starting node for the algorithm.
+ * @param graph The Graph object on which the algorithm will be executed.
+ */
 static void run(int round, int trial, int startNode, const Graph &graph)
 {
     // Storing the results

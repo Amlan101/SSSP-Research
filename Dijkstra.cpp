@@ -1,7 +1,15 @@
 #include "Dijkstra.h"
 
 using namespace std;
-// Function to get the an array from the algorithm containing execution time, no of comparisons and no of relaxation
+
+/**
+ * Calculates the shortest paths from a starting node to all other nodes using Dijkstra's algorithm.
+ *
+ * @param graph The graph object containing nodes and their adjacency lists with associated weights.
+ * @param StartNode The index of the starting node for path calculations.
+ * @return return_value An object containing execution time, number of comparisons, number of relaxations, shortest distances,
+ *                      parent information, and memory used during the execution.
+ */
 return_value getMinimumSpanningTreeDijkstra(const Graph graph, int StartNode)
 {
 
@@ -14,8 +22,8 @@ return_value getMinimumSpanningTreeDijkstra(const Graph graph, int StartNode)
     vector<vector<int>> parent(graph.nodesCount, vector<int>());
 
     MinHeap mh;
-    //priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    //set<pair<int, int>> st;
+    // priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    // set<pair<int, int>> st;
 
     int noOfComparisons = 0, noOfRelaxation = 0;
 
@@ -23,10 +31,10 @@ return_value getMinimumSpanningTreeDijkstra(const Graph graph, int StartNode)
     Dst[StartNode] = 0;
     vis[StartNode] = true;
     mh.insert(make_pair(0, StartNode));
-    //st.insert(make_pair(0, StartNode));
+    // st.insert(make_pair(0, StartNode));
 
     // main loop
-    while(!mh.isEmpty())
+    while (!mh.isEmpty())
     {
         //! For finding the SDSP we can break the loop if the current node is the destination
         // if(pq.top().second == EndNode) break;
@@ -71,20 +79,20 @@ return_value getMinimumSpanningTreeDijkstra(const Graph graph, int StartNode)
     // Calculate the duration between start and end
     auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
-    //Calculating the memory
+    // Calculating the memory
     unsigned long long mem = sizeof(start) + sizeof(end) + sizeof(Dst) + sizeof(vis) + sizeof(parent) + sizeof(noOfComparisons) + sizeof(noOfRelaxation);
 
-    return return_value(duration.count(), noOfComparisons, noOfRelaxation,Dst,parent,mem);
+    return return_value(duration.count(), noOfComparisons, noOfRelaxation, Dst, parent, mem);
 }
 
-//int findMinDistance(const vector<int>& Dst, const vector<bool>& vis ) {
-//    int min = INT_MAX, minIdx = 0;
+// int findMinDistance(const vector<int>& Dst, const vector<bool>& vis ) {
+//     int min = INT_MAX, minIdx = 0;
 //
-//    for (int i = 0; i < Dst.size(); i++) {
-//        if (Dst[i] <= min && !vis[i]) {
-//            min = Dst[i];
-//            minIdx = i;
-//        }
-//    }
-//    return minIdx;
-//}
+//     for (int i = 0; i < Dst.size(); i++) {
+//         if (Dst[i] <= min && !vis[i]) {
+//             min = Dst[i];
+//             minIdx = i;
+//         }
+//     }
+//     return minIdx;
+// }

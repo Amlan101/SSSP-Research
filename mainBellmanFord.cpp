@@ -16,14 +16,18 @@ using namespace std;
 
 // defining constant expressions
 constexpr auto nodeCount = 20;
-constexpr auto file = "Graph_2_20_Nodes.csv";
-constexpr auto preformanceFile = "BellmanFordPerforma_2_20_Nodes.csv";
-constexpr auto outputFile = "BellmanFordOutput_2_20_Nodes.csv";
+constexpr auto file = "testGraphs/Graph_2_20_Nodes.csv";
+constexpr auto preformanceFile = "Outputs/BellmanFordPerforma_2_20_Nodes.csv";
+constexpr auto outputFile = "Outputs/BellmanFordOutput_2_20_Nodes.csv";
 constexpr auto noOfRounds = 20;
 constexpr auto noOfTrials = 5;
 
-// Helper function to call and prepare the returned value to be written in a CSV file
-
+/**
+ * Converts a vector of integers to its string representation enclosed within braces.
+ *
+ * @param vec The input vector to be converted to a string.
+ * @return string A string representation of the input vector enclosed within braces.
+ */
 static string vecToStr(const vector<int> &vec)
 {
     stringstream data;
@@ -36,6 +40,12 @@ static string vecToStr(const vector<int> &vec)
     return data.str();
 }
 
+/**
+ * Converts a vector of vectors of integers to its string representation enclosed within braces and brackets.
+ *
+ * @param vec The input vector of vectors to be converted to a string.
+ * @return string A string representation of the input vector of vectors enclosed within braces and brackets.
+ */
 static string vecVecToStr(const vector<vector<int>> &vec)
 {
     stringstream data;
@@ -58,6 +68,15 @@ static string vecVecToStr(const vector<vector<int>> &vec)
     return data.str();
 }
 
+/**
+ * Executes the Bellman-Ford algorithm on the given graph for a specific round and trial,
+ * stores and writes the results into CSV files.
+ *
+ * @param round The current round number of execution.
+ * @param trial The current trial number.
+ * @param startNode The starting node for the algorithm.
+ * @param graph The Graph object on which the Bellman-Ford algorithm is applied.
+ */
 static void run(int round, int trial, int startNode, const Graph &graph)
 {
     // Storing the results
@@ -141,9 +160,4 @@ int main()
     return 0;
 }
 // 1. Test out the MinHeap.h (Unit testing and manually)
-// 2. Organise different CSV files for Djikstra and BellmanFord
-// 3. Document the entire codebase in a better format
 // 4. Document issues and solutions in a report for future
-// 5. The CSV files should be formatted better along with independent runs for each of the algorithms
-// 6. Keep the system pristine whilst running each algorithm (ideal scenario should be maintained)
-// 7.

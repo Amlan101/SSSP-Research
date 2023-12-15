@@ -1,7 +1,14 @@
 #include "BellmanFord.h"
 using namespace std;
 
-// Function to get the an array from the algorithm containing execution time, no of comparisons and no of relaxation
+/**
+ * Calculates the shortest paths from a source node to all other nodes using the Bellman-Ford algorithm.
+ *
+ * @param graph The graph object containing nodes and their adjacency lists with associated weights.
+ * @param source The index of the source node for path calculations.
+ * @return return_value An object containing execution time, number of comparisons, number of relaxations, shortest distances,
+ *                      parent information, and memory used during the execution.
+ */
 return_value getMinimumSpanningTreeBellmanFord(const Graph graph, int source)
 {
     // Record the start time

@@ -2,12 +2,19 @@
 
 #include <iostream>
 #include <string>
-#include<fstream>
+#include <fstream>
 #include <sstream>
 #include "Graph.h"
 using namespace std;
 
-int initialize(string filename, Graph& graph)
+/**
+ * Initializes a graph by reading data from a CSV file and populating the graph accordingly.
+ *
+ * @param filename The name of the CSV file containing graph data.
+ * @param graph The Graph object to be initialized and populated with data from the CSV file.
+ * @return int Returns 1 upon successful initialization, 0 if the CSV file fails to open.
+ */
+int initialize(string filename, Graph &graph)
 {
     ifstream csvFile;
     csvFile.open(filename);
@@ -42,7 +49,12 @@ int initialize(string filename, Graph& graph)
     return 1;
 }
 
-//Function to write in a CSV file with a given format
+/**
+ * Appends given data to a CSV file or creates a new file if it doesn't exist.
+ *
+ * @param data The string of data to be appended to the CSV file.
+ * @param file_name The name of the CSV file where the data will be written.
+ */
 void writeInCSV(string data, string file_name)
 {
     // file pointer
@@ -51,8 +63,6 @@ void writeInCSV(string data, string file_name)
     // opens an existing csv file or creates a new file.
     csvFile.open(file_name, ios::in | ios::app);
     csvFile << data
-        << "\n";
+            << "\n";
     csvFile.close();
 }
-
-
