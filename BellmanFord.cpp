@@ -8,7 +8,7 @@ return_value getMinimumSpanningTreeBellmanFord(const Graph graph, int source)
     auto start = chrono::high_resolution_clock::now();
 
     vector<int> distance(graph.nodesCount, INT_MAX);
-    vector<vector<int>> parent(graph.nodesCount, vector<int>());
+    vector<set<int>> parent(graph.nodesCount);
 
     distance[source] = 0;
 
@@ -33,13 +33,12 @@ return_value getMinimumSpanningTreeBellmanFord(const Graph graph, int source)
                     noOfRelaxation++;
                     distance[neighbour] = relax;
                     parent[neighbour].clear();
-                    parent[neighbour].push_back(curr);
+                    parent[neighbour].insert(curr);
                 }
                 else if (relax == distance[neighbour])
                 {
                     // This part remains the same for finding all parents
-                    if (parent[neighbour].back() != curr)
-                        parent[neighbour].push_back(curr);
+                    parent[neighbour].insert(curr);
                 }
             }
         }
@@ -60,14 +59,20 @@ return_value getMinimumSpanningTreeBellmanFord(const Graph graph, int source)
     //     }
     // }
 
-
     // Record the end time
     auto end = chrono::high_resolution_clock::now();
     // Calculate the duration between start and end
     auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
-    //Calculating the memory
+    // Calculating the memory
     unsigned long long mem = sizeof(start) + sizeof(end) + sizeof(distance) + sizeof(parent) + sizeof(noOfComparisons) + sizeof(noOfRelaxation);
 
-    return return_value(duration.count(), noOfComparisons, noOfRelaxation,distance,parent,mem);
+    vector<vector<int>> returnParent;
+    for (const auto &set : parent)
+    {
+        vector<int> temp(set.begin(), set.end());
+        returnParent.push_back(temp);
+    }
+
+    return return_value(duration.count(), noOfComparisons, noOfRelaxation, distance, returnParent, mem);
 }

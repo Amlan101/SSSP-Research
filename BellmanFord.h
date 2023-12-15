@@ -6,6 +6,7 @@
 #include <queue>
 #include <utility>
 #include <climits>
+#include <set>
 #include "return_value.h"
 #include "Graph.h"
 
