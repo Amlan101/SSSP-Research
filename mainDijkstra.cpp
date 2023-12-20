@@ -15,11 +15,11 @@
 using namespace std;
 
 // defining constant expressions
-constexpr auto nodeCount = 20;
-constexpr auto file = "testGraphs/Graph_2_20_Nodes.csv";
-constexpr auto preformanceFile = "Outputs/DijkstraPerforma_2_20_Nodes.csv";
-constexpr auto outputFile = "Outputs/DijkstraOutput_2_20_Nodes.csv";
-constexpr auto noOfRounds = 20;
+constexpr auto nodeCount = 40;
+constexpr auto file = "testGraphs/Graph_4_40_Nodes/Graph_4_Sparse.csv";
+constexpr auto preformanceFile = "Outputs/DijkstraPerforma_4_40_Sparse.csv";
+constexpr auto outputFile = "Outputs/DijkstraOutput_4_40_Sparse.csv";
+constexpr auto noOfRounds = 40;
 constexpr auto noOfTrials = 5;
 
 /**
